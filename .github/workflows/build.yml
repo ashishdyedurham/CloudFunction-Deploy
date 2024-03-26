@@ -31,6 +31,6 @@ jobs:
           --runtime=python39 \
           --region=us-central1 \
           --trigger-http \
-          --source=gs://test-repository-us-central1/function-source.zip \
+          --source=gs://test-repository-us-central1/. \
           --entry-point=hello_http \
           --project=ti-ds-tii-01
