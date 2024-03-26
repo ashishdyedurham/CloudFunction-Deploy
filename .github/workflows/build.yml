@@ -23,7 +23,7 @@ jobs:
 
     - name: Create zip archive
       run: |
-        zip -r function-source.zip .
+        zip -r function-source.zip main.py equirements.txt
 
     - name: upload zip in gcs
       run: |
