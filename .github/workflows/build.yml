@@ -33,4 +33,5 @@ jobs:
           --source=CloudFunction-Deploy \
           --entry-point=main \
           --region=us-central1 \
-          --project=${{ secrets.GCP_PROJECT_ID }}
+          --project=${{ secrets.GCP_PROJECT_ID }} \
+          --no-gen2
