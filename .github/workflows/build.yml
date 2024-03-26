@@ -32,6 +32,7 @@ jobs:
           --region=us-central1 \
           --trigger-event-filters="type=google.pubsub.message.published" \
           --trigger-event-filters="attributes.topic='my-topic'" \
+          --allow-unauthenticated \
           --trigger-http \
           --project=${{ secrets.GCP_PROJECT_ID }} \
           --no-gen2
