@@ -1,4 +1,1 @@
-functions-framework==3.*
-google-auth
-boto3
-requests
+request
