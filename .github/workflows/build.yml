@@ -1,10 +1,16 @@
 name: Deploy Cloud Function
 
 on:
-  push:
-    branches:
-      - main  
-
+  workflow_dispatch:
+    inputs:
+      env:
+        type: choice
+        description: Make a choice
+        options:
+        - main  
+        - dev
+        - stage
+        
 jobs:
   deploy:
     name: Deploy Function
