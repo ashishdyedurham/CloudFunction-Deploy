@@ -30,14 +30,8 @@ jobs:
         gcloud functions deploy test-deploy-function \
           --runtime=Python3.9 \
           --trigger-http \
-          --source=CloudFunction-Deploy \
+          --source=./CloudFunction-Deploy \
           --entry-point=main \
           --region=us-central1 \
           --project=${{ secrets.GCP_PROJECT_ID }} \
           --no-gen2
-
-    env:
-        YOUR_FUNCTION_NAME: test-deploy-function
-        RUNTIME: Python3.9
-        SOURCE_DIRECTORY: ./CloudFunction-Deploy
-        REGION: us-central1
