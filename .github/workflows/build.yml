@@ -21,9 +21,13 @@ jobs:
         service_account_key: ${{ secrets.GCP_SA_KEY }}
         export_default_credentials: true
 
-    # - name: Create zip archive
-    #   run: |
-    #     zip -r function-source.zip .
+    - name: Create zip archive
+      run: |
+        zip -r function-source.zip .
+
+    - name: upload zip in gcs
+      run: |
+        gsutil cp function-source.zip gs://test-repository-us-central1
 
     - name: Build and deploy Cloud Function
       run: |
@@ -31,6 +35,6 @@ jobs:
           --runtime=python39 \
           --region=us-central1 \
           --trigger-http \
-          --source=gs://test-repository-us-central1/. \
+          --source=gs://test-repository-us-central1/function-source.zip \
           --entry-point=hello_http \
           --project=ti-ds-tii-01
