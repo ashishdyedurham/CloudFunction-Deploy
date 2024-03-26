@@ -25,14 +25,19 @@ jobs:
       run: |
         zip -r repository.zip .
 
-    - name: Build and deploy Cloud Function
-      run: |
-        gcloud functions deploy testFunction \
-          --runtime=Python3.9 \
-          --region=us-central1 \
-          --trigger-event-filters="type=google.pubsub.message.published" \
-          --trigger-event-filters="attributes.topic='my-topic'" \
-          --allow-unauthenticated \
-          --trigger-http \
-          --project=${{ secrets.GCP_PROJECT_ID }} \
-          --no-gen2
+    - id: 'deploy'
+      uses: 'google-github-actions/deploy-cloud-functions@v2'
+      with:
+        name: 'my-function'
+        runtime: 'Python39'
+    # - name: Build and deploy Cloud Function
+    #   run: |
+    #     gcloud functions deploy testFunction \
+    #       --runtime=Python3.9 \
+    #       --region=us-central1 \
+    #       --trigger-event-filters="type=google.pubsub.message.published" \
+    #       --trigger-event-filters="attributes.topic='my-topic'" \
+    #       --allow-unauthenticated \
+    #       --trigger-http \
+    #       --project=${{ secrets.GCP_PROJECT_ID }} \
+    #       --no-gen2
