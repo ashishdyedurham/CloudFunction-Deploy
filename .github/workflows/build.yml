@@ -30,6 +30,7 @@ jobs:
         gcloud functions deploy test-deploy-function \
           --runtime=Python3.9 \
           --region=us-central1 \
+          --trigger-event-filters="type=google.pubsub.message.published" \
           --trigger-http \
           --project=${{ secrets.GCP_PROJECT_ID }} \
           --no-gen2
