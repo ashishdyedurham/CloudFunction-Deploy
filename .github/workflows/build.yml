@@ -28,7 +28,7 @@ jobs:
     - name: Build and deploy Cloud Function
       run: |
         gcloud functions deploy test-deploy-function \
-          --runtime Python 3.9 \
+          --runtime Python3.9 \
           --trigger-http \
           --source=CloudFunction-Deploy \
           --entry-point=main \
