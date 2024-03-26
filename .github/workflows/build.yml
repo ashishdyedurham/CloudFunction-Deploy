@@ -27,10 +27,11 @@ jobs:
 
     - name: Build and deploy Cloud Function
       run: |
-        gcloud functions deploy test-deploy-function \
+        gcloud functions deploy testFunction \
           --runtime=Python3.9 \
           --region=us-central1 \
           --trigger-event-filters="type=google.pubsub.message.published" \
+          --trigger-event-filters="attributes.topic='my-topic'"
           --trigger-http \
           --project=${{ secrets.GCP_PROJECT_ID }} \
           --no-gen2
