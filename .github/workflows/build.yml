@@ -25,11 +25,14 @@ jobs:
       run: |
         zip -r repository.zip .
 
-    - id: 'deploy'
-      uses: 'google-github-actions/deploy-cloud-functions@v2'
+    - id: deploy
+      uses: google-github-actions/deploy-cloud-functions@v2
       with:
-        name: 'my-function'
-        runtime: 'Python3.9'
+        name: my-function
+        runtime: Python3.9
+        memory_mb: 128
+        trigger: http
+        region: us-central1
     # - name: Build and deploy Cloud Function
     #   run: |
     #     gcloud functions deploy testFunction \
