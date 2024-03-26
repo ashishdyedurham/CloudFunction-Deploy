@@ -30,5 +30,6 @@ jobs:
         gcloud functions deploy test-deploy-function \
           --runtime=Python3.9 \
           --region=us-central1 \
+          --trigger-http \
           --project=${{ secrets.GCP_PROJECT_ID }} \
           --no-gen2
