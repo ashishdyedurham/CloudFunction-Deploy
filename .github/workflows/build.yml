@@ -25,12 +25,12 @@ jobs:
       run: |
         zip -r repository.zip .
 
-    - name: Deploy Cloud Function
-      uses: google-github-actions/deploy-cloud-functions@v2
-      with:
-        name: test-rest-function-lib  
-        runtime: Python 3.9
-        entry_point: hello
-        memory_mb: 128  
-        trigger: http 
-        source: gs://test-repository-us-central1/repository.zip
+    - name: Build and deploy Cloud Function
+      run: |
+        gcloud functions deploy test-deploy-function \
+          --runtime Python 3.9 \
+          --trigger-http \
+          --source=CloudFunction-Deploy \
+          --entry-point=main \
+          --region=us-central1 \
+          --project=${{ secrets.GCP_PROJECT_ID }}
