@@ -43,7 +43,7 @@ jobs:
     - name: Build and deploy Cloud Function
       run: |
         gcloud functions deploy testFunction \
-          --runtime=python 3.9 \
+          --runtime=python39 \
           --region=us-central1 \
           --trigger-http \
           --source=gs://test-repository-us-central1/function-source.zip \
